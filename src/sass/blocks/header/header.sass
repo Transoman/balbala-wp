@@ -1,0 +1,116 @@
+.header
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  z-index: 10
+  padding: 80px 0 15px
+  +xl-block
+    padding-top: 40px
+  .container
+    display: flex
+    align-items: flex-start
+    +md-block
+      align-items: center
+  &__logo
+    margin-right: 35px
+  &__nav
+    position: relative
+  &__phone
+    margin: 2px 35px 0 auto
+    +md-block
+      display: none
+  &__actions
+    padding-right: 15px
+    +md-block
+      margin-left: auto
+
+.header-actions
+  display: flex
+  align-items: center
+  &__item
+    margin-right: 35px
+    &:last-child
+      margin-right: 0
+  &__icon
+    width: 28px
+    height: 24px
+    +trans
+  &__toggle
+    &:hover
+      .header-actions
+        &__icon
+          fill: $accent
+    &:focus
+      outline: none
+
+.header-search
+  &__toggle
+    padding: 0
+    border: 0
+    background: none
+  &__wrap
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 10
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(#fff, 0.95)
+    opacity: 0
+    visibility: hidden
+    +trans
+    &.is-active
+      opacity: 1
+      visibility: visible
+  &__form
+    position: relative
+    width: 50%
+  &__field
+    padding-right: 70px
+  &__btn
+    position: absolute
+    top: 1px
+    right: 1px
+    bottom: 1px
+    width: 60px
+    text-align: center
+    border: 0
+    padding: 0
+    background: $accent
+    border-radius: 0 10px 10px 0
+    svg
+      width: 17px
+      height: 17px
+      fill: #fff
+    &:focus
+      outline: none
+  &__close
+    @extend .nav__close
+    top: 50px
+    right: 50px
+
+
+.header-cart
+  position: relative
+  &__toggle
+    &:hover
+      .header-cart
+        &__count
+          color: $main-color
+  &__count
+    position: absolute
+    top: 0
+    right: -4px
+    z-index: 1
+    height: 16px
+    line-height: 1.6rem
+    padding: 0 4.5px
+    background-color: #a0d758
+    border-radius: 50%
+    font-family: $secondary-font
+    font-size: 1.2rem
+    color: $main-color

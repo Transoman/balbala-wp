@@ -1,0 +1,57 @@
+.hero
+  padding: 255px 0 160px
+  background: #faf1fd url(images/general/hero-bg.jpg) no-repeat center top / cover
+  +xl-block
+    padding-top: 200px
+  +md-block
+    padding: 150px 0 100px
+  &__wrap
+    +row-flex
+  .section-title
+    text-align: left
+    +md-block
+      text-align: center
+    &::after
+      margin-left: 0
+      margin-bottom: 25px
+      +md-block
+        margin-left: auto
+        margin-right: auto
+  &__content
+    +col
+    +size(6)
+    +size-md(12)
+    +md-block
+      margin-bottom: 60px
+      text-align: center
+  &__video
+    +col
+    +size(6)
+    +size-md(12)
+    padding-right: 15px
+    +md-block
+      padding-right: 0
+    .video
+      height: 100%
+  &__descr
+    margin-bottom: 85px
+    max-width: 350px
+    font-size: 1.4rem
+    +md-block
+      max-width: none
+      margin-bottom: 30px
+    p
+      &:last-child
+        margin-bottom: 0
+  .btn
+    position: relative
+    font-size: 1.8rem
+    padding: 23px 50px 23px 100px
+    &::before
+      content: ''
+      position: absolute
+      top: -13px
+      left: 20px
+      width: 55px
+      height: 70px
+      background: url(images/general/btn-sock.png) no-repeat center / contain
