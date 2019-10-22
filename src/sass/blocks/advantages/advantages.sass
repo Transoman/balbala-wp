@@ -1,0 +1,81 @@
+.advantages
+  &__wrap
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    padding: 0 15px
+    +lg-block
+      padding: 0
+      +row-flex
+    +md-block
+      padding-right: 200px
+    +sm-block
+      padding: 0
+  &__item
+    position: relative
+    z-index: 1
+    display: flex
+    align-items: center
+    max-width: 475px
+    width: 100%
+    min-height: 140px
+    margin-bottom: 50px
+    padding: 25px
+    border: 1px solid $light-gray
+    border-radius: 10px
+    box-shadow: $bx-shadow
+    background-color: #fff
+    overflow: hidden
+    +size-lg(6)
+    +size-md(12)
+    +lg-block
+      +col
+    +md-block
+      margin-bottom: 30px
+    +sm-block
+      min-height: auto
+      max-width: none
+    &:last-child
+      margin: 0 auto
+    a
+      color: $accent
+      text-decoration: underline
+    p
+      +sm-block
+        br
+          display: none
+      &:last-child
+        margin-bottom: 0
+  &__num
+    position: absolute
+    bottom: -40px
+    right: 10px
+    z-index: -1
+    font-size: 20.5rem
+    font-weight: 800
+    line-height: 0.8
+    color: $light-gray
+    +sm-block
+      font-size: 10rem
+      bottom: -20px
+  &__img
+    position: absolute
+    top: 0
+    left: 50%
+    z-index: 2
+    transform: translateX(-50%)
+    +lg-block
+      width: 150px
+      top: 70px
+      left: 47%
+    +md-block
+      left: auto
+      right: 0
+      transform: none
+    +sm-block
+      position: static
+      top: auto
+      right: auto
+      display: block
+      margin: 0 auto 30px

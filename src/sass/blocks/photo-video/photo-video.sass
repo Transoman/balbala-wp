@@ -1,0 +1,36 @@
+.photo-video
+  &__wrap
+    +row-flex
+    padding: 0 15px
+  &__left
+    +col
+    +size(6)
+  &__right
+    +col
+    +size(6)
+    padding: 15px 0
+
+.photo-video-slider
+  position: relative
+  margin: 0 -15px
+  padding: 15px
+  &__item
+    display: block
+    border-radius: 10px
+    overflow: hidden
+    box-shadow: 0 1px 4px rgba(#e2e2e2, 0.46)
+  .slider-controls
+    position: absolute
+    bottom: 35px
+    left: 35px
+
+.photo-video-list
+  +row-flex
+  height: 100%
+  &__item
+    +col
+    +size(6)
+    margin-bottom: 30px
+    height: calc(100% / 2 - 15px)
+    .video
+      height: 100%

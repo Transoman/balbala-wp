@@ -1,0 +1,89 @@
+.product-item
+  position: relative
+  padding: 80px 45px 30px
+  border: 1px solid $light-gray
+  box-shadow: $bx-shadow
+  border-radius: 10px
+  text-align: center
+  +trans
+  &:hover
+    box-shadow: 0 5px 15px rgba(#f1e1f6, 0.6)
+  &__title
+    margin-top: 20px
+    margin-bottom: 5px
+    font-size: 1.8rem
+    font-weight: 700
+    color: $main-color
+  &__sale-perc
+    position: absolute
+    top: 15px
+    left: 15px
+    z-index: 1
+    padding: 1px 10px
+    font-size: 1.4rem
+    font-weight: 700
+    color: $gray
+    border-radius: 25px
+    border: 1px solid $gray
+  .button
+    &.loading
+      position: relative
+      &::after
+        content: ''
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        border-radius: inherit
+        background-image: linear-gradient(#fce9ff, #eeb8ff)
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: 50%
+        z-index: 1
+        width: 18px
+        height: 18px
+        margin: -9px 0 0 -9px
+        opacity: 1
+        border-radius: 50%
+        border: 3px solid transparent
+        border-top: 3px solid rgba(255, 255, 255, 0.9)
+        border-right: 3px solid rgba(255, 255, 255, 0.9)
+        background: transparent
+        animation: 0.5s rotate cubic-bezier(0.4, 0, 0.2, 1) infinite
+    &.added
+      display: none
+      + a.added_to_cart
+        @extend .btn
+        position: relative
+        padding-left: 0
+        padding-right: 0
+        text-indent: 100%
+        white-space: nowrap
+        overflow: hidden
+        &::before
+          content: ''
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%) rotate(45deg)
+          width: 7px
+          height: 13px
+          border-right: 2px solid #fff
+          border-bottom: 2px solid #fff
+
+
+.price
+  display: flex
+  flex-direction: column-reverse
+  margin-bottom: 20px
+  font-size: 2.4rem
+  font-weight: 700
+  color: $accent
+  del
+    font-size: 1.4rem
+    color: #cecece
+  ins
+    text-decoration: none

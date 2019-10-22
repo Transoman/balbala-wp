@@ -92,7 +92,11 @@ if ( ! function_exists( 'ith_setup' ) ) :
       'video'
     ) );
 
+    add_theme_support( 'woocommerce' );
+    add_theme_support( 'editor-styles' );
     add_theme_support( 'align-wide' );
+
+    add_image_size( 'slider-gallery', 555, 410, true );
   }
 endif;
 add_action( 'after_setup_theme', 'ith_setup' );

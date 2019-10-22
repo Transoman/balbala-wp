@@ -48,4 +48,9 @@ if ( class_exists( 'acf' ) ) {
 /**
  * Woocommerce Functions
  */
-require get_template_directory() . '/inc/wc-functions.php';
+require get_template_directory() . '/inc/woocommerce/wc-functions.php';
+
+/**
+ * Custom Post Types
+ */
+require get_template_directory() . '/inc/custom-post-type.php';

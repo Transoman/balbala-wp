@@ -1,0 +1,33 @@
+.slider-controls
+  display: flex
+  align-items: center
+  +sm-block
+    justify-content: center
+  .swiper-button-prev,
+  .swiper-button-next
+    position: static
+    margin: 0
+  .swiper-button-prev
+    margin-right: 15px
+
+.swiper-button-prev,
+.swiper-button-next
+  width: 53px
+  height: 53px
+  border-radius: 50%
+  border: 1px solid $light-gray
+  background: #fff
+  box-shadow: $bx-shadow
+  &::after
+    display: none
+  &:hover
+    background-image: linear-gradient(to right, #a5d861, #e9f6d7)
+    border-color: #fff
+    box-shadow: 0 5px 20px rgba(#a5d861, 0.2)
+  &:focus
+    outline: none
+  svg
+    width: 9px
+    height: 16px
+    fill: rgba($main-color, 0.5)
+

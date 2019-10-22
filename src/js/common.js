@@ -3,7 +3,8 @@
 global.jQuery = require('jquery');
 let svg4everybody = require('svg4everybody'),
   popup = require('jquery-popup-overlay'),
-  iMask = require('imask');
+  iMask = require('imask'),
+  Swiper = require('swiper');
 
 jQuery(document).ready(function($) {
   // Toggle nav menu
@@ -146,6 +147,36 @@ jQuery(document).ready(function($) {
 
     return 'https://www.youtube.com/embed/' + id + query;
   }
+
+  // Slider
+  new Swiper('.new-products-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '.new-products .swiper-button-next',
+      prevEl: '.new-products .swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      993: {
+        slidesPerView: 3,
+      },
+      1231: {
+        slidesPerView: 4,
+      }
+    }
+  });
+
+  new Swiper('.photo-video-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  });
 
 
   toggleNav();
