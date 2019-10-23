@@ -41,7 +41,6 @@ $title = get_field('title') ?: 'Заголовок...';
       </div>
     </div>
 
-
     <?php $args = array(
       'post_type' => 'product',
       'stock' => 1,

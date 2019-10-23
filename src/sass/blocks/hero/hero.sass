@@ -1,4 +1,5 @@
 .hero
+  position: relative
   padding: 255px 0 160px
   background: #faf1fd url(images/general/hero-bg.jpg) no-repeat center top / cover
   +xl-block
@@ -55,3 +56,10 @@
       width: 55px
       height: 70px
       background: url(images/general/btn-sock.png) no-repeat center / contain
+  .scroll-down
+    position: absolute
+    bottom: -25px
+    left: 50%
+    transform: translateX(-50%)
+    &:focus
+      outline: none

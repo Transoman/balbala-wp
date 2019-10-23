@@ -52,4 +52,6 @@ $video = get_field('video');
       </div>
     </div>
   </div>
+
+  <button type="button" class="scroll-down"><?php ith_the_icon('arrow-down'); ?></button>
 </section>

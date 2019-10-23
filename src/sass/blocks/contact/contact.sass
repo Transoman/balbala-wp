@@ -1,0 +1,101 @@
+.contact
+  &__wrap
+    +row-flex
+    padding: 0 15px
+    +lg-block
+      padding: 0
+  &__left
+    +col
+    +size(6)
+    +size-md(12)
+    position: relative
+    +md-block
+      margin-bottom: 30px
+  &__right
+    +col
+    +size(6)
+    +size-md(12)
+    padding: 50px 30px 30px
+    border-radius: 10px
+    border: 1px solid #eeeeee
+    box-shadow: 0 1px 4px rgba(#ededed, 0.46)
+    +sm-block
+      padding: 20px 15px
+    h3
+      margin-bottom: 25px
+      font-size: 3rem
+      font-weight: 700
+      color: $main-color
+      +sm-block
+        margin-bottom: 15px
+  &__content
+    display: none
+    &.active
+      display: block
+  &__address
+    margin-bottom: 30px
+    p
+      &:last-child
+        margin-bottom: 0
+  &__data
+    font-weight: 600
+    color: $main-color
+    svg
+      width: 14px
+      height: 14px
+      fill: $accent
+      margin-right: 10px
+  &__map
+    width: 100%
+    height: 100%
+    border-radius: 10px
+    overflow: hidden
+    box-shadow: 0 1px 4px rgba(#ededed, 0.46)
+    +md-block
+      height: 300px
+
+.contact-dropdown
+  position: absolute
+  top: 30px
+  left: 30px
+  z-index: 2
+  background-image: linear-gradient(#fce9ff, #eeb8ff)
+  border-radius: 5px
+  box-shadow: 0 13px 38px #f4d8fd
+  +md-block
+    top: 15px
+    left: 15px
+  &__head
+    position: relative
+    padding: 13px 50px 13px 25px
+    font-size: 1.6rem
+    font-weight: 700
+    cursor: pointer
+    &::after
+      content: ''
+      position: absolute
+      top: 45%
+      right: 24px
+      width: 8px
+      height: 8px
+      border-right: 2px solid $main-color
+      border-bottom: 2px solid $main-color
+      transform: rotate(45deg) translateY(-50%)
+      +trans
+  &__body
+    display: none
+    padding: 0 20px 13px 25px
+  &__list
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      &.active
+        a
+          color: #000
+    a
+      font-size: 1.4rem
+      font-weight: 600
+      color: $main-color
+      &:hover
+        color: rgba($main-color, 0.8)

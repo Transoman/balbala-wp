@@ -1,0 +1,89 @@
+.collection
+  &__wrap
+    padding: 0 15px
+    +lg-block
+      padding: 0
+
+.collection-slider
+  margin: 0 -15px
+  padding: 15px
+  &__item
+    height: auto
+    +sm-block
+      height: 100%
+    .product-item
+      display: flex
+      text-align: left
+      padding: 65px 30px 35px
+      height: 100%
+      +sm-block
+        flex-direction: column-reverse
+        padding: 80px 45px 30px
+        text-align: center
+      &__content
+        display: flex
+        flex-direction: column
+        flex-shrink: 0
+      &__img
+        margin-left: auto
+      &__bottom
+        margin-top: auto
+      &__ribbons
+        position: absolute
+        top: 35px
+        left: 30px
+        display: flex
+        align-items: center
+        +sm-block
+          top: 15px
+          left: 15px
+        & > *:not(:last-child)
+          margin-right: 5px
+      &__sale-perc
+        position: static
+        display: inline-block
+      &__new
+        @extend .product-item__sale-perc
+        color: #a5d861
+        border-color: #a5d861
+      &__title
+        font-size: 3rem
+        +sm-block
+          font-size: 1.8rem
+      &__cat
+        margin-left: 20px
+        font-size: 1.4rem
+        font-weight: 700
+        color: #bbbaba
+        +sm-block
+          margin-left: 0
+    &--double
+      .product-item
+        height: calc(100% / 2 - 15px)
+        margin-bottom: 30px
+        padding: 20px 20px 20px 30px
+        +sm-block
+          text-align: center
+        &:last-child
+          margin-bottom: 0
+        &__content
+          padding-top: 40px
+          +sm-block
+            padding-top: 0
+        &__img
+          max-width: 160px
+          +sm-block
+            max-width: none
+        &__title
+          margin-bottom: 10px
+          font-size: 1.8rem
+        &__bottom
+          display: flex
+          flex-direction: row-reverse
+          align-items: center
+          +sm-block
+            display: block
+        .price
+          margin: 0 0 0 20px
+          +sm-block
+            margin: 0 0 20px 0

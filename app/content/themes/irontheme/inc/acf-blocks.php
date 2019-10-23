@@ -59,6 +59,16 @@ function register_acf_block_types() {
     'mode'              => 'auto',
     'keywords'          => array(  )
   ));
+
+  acf_register_block_type(array(
+    'name'              => 'collection',
+    'title'             => __('Колекции'),
+    'render_template'   => 'template-parts/blocks/collection/collection.php',
+    'category'          => 'formatting',
+    'icon'              => 'admin-comments',
+    'mode'              => 'auto',
+    'keywords'          => array(  )
+  ));
 }
 
 // Check if function exists and hook into setup.

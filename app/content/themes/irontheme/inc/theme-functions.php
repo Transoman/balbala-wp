@@ -123,12 +123,20 @@ add_action( 'after_setup_theme', 'ith_content_width', 0 );
  */
 function ith_widgets_init() {
   register_sidebar( array(
-    'name'          => esc_html__( 'Sidebar', 'ith' ),
-    'id'            => 'sidebar-1',
-    'description'   => esc_html__( 'Add widgets here.', 'ith' ),
+    'name'          => esc_html__( 'Футер меню', 'ith' ),
+    'id'            => 'footer-menu',
     'before_widget' => '<div id="%1$s" class="widget %2$s">',
     'after_widget'  => '</div>',
-    'before_title'  => '<h3 class="widget-title">',
+    'before_title'  => '<h4 class="widget-title">',
+    'after_title'   => '</h3>',
+  ) );
+
+  register_sidebar( array(
+    'name'          => esc_html__( 'Футер рассылка', 'ith' ),
+    'id'            => 'footer-subscribe',
+    'before_widget' => '<div id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4 class="widget-title">',
     'after_title'   => '</h3>',
   ) );
 }
@@ -209,3 +217,6 @@ function get_any_post($post_type, $count = null, $tax_name = null, $tax_id = nul
 	$query = new WP_Query( $args );
 	return $query;
 }
+
+add_filter('widget_text','do_shortcode');
+add_filter('widget_html','do_shortcode');

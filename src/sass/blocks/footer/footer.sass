@@ -1,0 +1,96 @@
+.footer
+  padding-top: 30px
+  padding-bottom: 50px
+  &__wrap
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    padding: 0 15px
+    +lg-block
+      padding: 0
+  &__col
+    +sm-block
+      width: 100%
+      text-align: center
+      margin-bottom: 30px
+    .widget-title
+      margin-bottom: 15px
+      font-weight: 700
+      color: $main-color
+    &--logo
+      width: 20%
+      +md-block
+        width: 40%
+      p
+        font-size: 1.4rem
+    &--menu
+      width: 40%
+      +md-block
+        width: 60%
+      ul
+        margin: 0
+        padding: 0
+        list-style: none
+        column-count: 2
+        li
+          display: inline-block
+          vertical-align: top
+          width: 100%
+          margin-bottom: 10px
+        a
+          font-size: 1.6rem
+          font-weight: 600
+          color: #646363
+          &:hover
+            color: $accent
+    &--subscribe
+      width: 34%
+      +md-block
+        width: 100%
+      form
+        position: relative
+        input[type="email"]
+          @extend .form-field
+        button[type="submit"]
+          position: absolute
+          top: 1px
+          right: 1px
+          bottom: 1px
+          width: 60px
+          padding: 0
+          border-radius: 0 10px 10px 0
+          background-color: $accent
+          border: 0
+          text-indent: 100%
+          white-space: nowrap
+          overflow: hidden
+          &:focus
+            outline: none
+          &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            width: 17px
+            height: 15px
+            background: url(images/general/telegram-fill.svg) no-repeat center / contain
+  &__logo
+    margin-bottom: 20px
+  &__policy
+    margin: 0
+    padding-left: 15px
+    font-size: 1.4rem
+    font-weight: 700
+    +lg-block
+      padding: 0
+    +sm-block
+      text-align: center
+    a
+      text-decoration: underline
+      color: $accent
+      &:hover
+        text-decoration: none
+  &__social
+    +sm-block
+      justify-content: center

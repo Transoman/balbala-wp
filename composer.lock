@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43d20440bf349e12cf1e7664561bf98a",
+    "content-hash": "0d6b517fa0c39e6a997a8213a855525b",
     "packages": [
         {
             "name": "composer/installers",
@@ -297,6 +297,26 @@
             "homepage": "https://wordpress.org/plugins/contact-form-7/"
         },
         {
+            "name": "wpackagist-plugin/duplicate-post",
+            "version": "3.2.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/duplicate-post/",
+                "reference": "tags/3.2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/duplicate-post.3.2.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/duplicate-post/"
+        },
+        {
             "name": "wpackagist-plugin/ewww-image-optimizer",
             "version": "5.1.1",
             "source": {
@@ -335,6 +355,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/force-regenerate-thumbnails/"
+        },
+        {
+            "name": "wpackagist-plugin/mailchimp",
+            "version": "1.5.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/mailchimp/",
+                "reference": "tags/1.5.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/mailchimp.1.5.7.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/mailchimp/"
         },
         {
             "name": "wpackagist-plugin/safe-svg",

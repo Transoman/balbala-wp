@@ -2,12 +2,16 @@
   &__wrap
     +row-flex
     padding: 0 15px
+    +lg-block
+      padding: 0
   &__left
     +col
     +size(6)
+    +size-md(12)
   &__right
     +col
     +size(6)
+    +size-md(12)
     padding: 15px 0
 
 .photo-video-slider
@@ -19,6 +23,8 @@
     border-radius: 10px
     overflow: hidden
     box-shadow: 0 1px 4px rgba(#e2e2e2, 0.46)
+    img
+      width: 100%
   .slider-controls
     position: absolute
     bottom: 35px
@@ -30,7 +36,17 @@
   &__item
     +col
     +size(6)
+    +size-xs(12)
     margin-bottom: 30px
     height: calc(100% / 2 - 15px)
+    +xs-block
+      height: auto
+      &:last-child
+        margin-bottom: 0
     .video
       height: 100%
+      &__button
+        width: 64px
+        height: 64px
+        &::before
+          border-width: 8px 0 8px 14px
