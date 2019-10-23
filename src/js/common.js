@@ -180,6 +180,7 @@ jQuery(document).ready(function($) {
     breakpoints: {
       993: {
         slidesPerView: 2,
+        autoHeight: false
       }
     }
   });

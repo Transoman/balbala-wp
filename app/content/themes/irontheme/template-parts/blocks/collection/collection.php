@@ -48,8 +48,8 @@ $title = get_field('title') ?: 'Заголовок...';
             
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
               </div>
   
               <a href="#">
@@ -77,8 +77,8 @@ $title = get_field('title') ?: 'Заголовок...';
 
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
                 <span class="product-item__cat">Коллекция</span>
               </div>
 
@@ -103,8 +103,8 @@ $title = get_field('title') ?: 'Заголовок...';
 
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
                 <span class="product-item__cat">Коллекция</span>
               </div>
 
@@ -131,8 +131,8 @@ $title = get_field('title') ?: 'Заголовок...';
 
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
               </div>
 
               <a href="#">
@@ -160,8 +160,8 @@ $title = get_field('title') ?: 'Заголовок...';
 
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
                 <span class="product-item__cat">Коллекция</span>
               </div>
 
@@ -186,8 +186,8 @@ $title = get_field('title') ?: 'Заголовок...';
 
             <div class="product-item__content">
               <div class="product-item__ribbons">
-                <div class="product-item__new">Новинка</div>
-                <div class="product-item__sale-perc">-10%</div>
+                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
                 <span class="product-item__cat">Коллекция</span>
               </div>
 

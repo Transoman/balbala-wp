@@ -42,7 +42,21 @@ function ith_show_sale_percentage_loop() {
       }
     }
   }
-  if ( $max_percentage > 0 ) echo "<div class='product-item__sale-perc'>-" . ceil($max_percentage) . "%</div>";
+
+  echo '<div class="product-item__ribbons">';
+
+  $data_created_obj = (array) $product->get_date_created();
+  $date_created = strtotime($data_created_obj['date']);
+  $now_date = time();
+  $limit = 864000;
+
+  if ($now_date - $date_created <= $limit) {
+    echo "<span class='product-item__ribbon product-item__ribbon--new'>Новинка</span>";
+  }
+
+  if ( $max_percentage > 0 ) echo "<span class='product-item__ribbon product-item__ribbon--sale-perc'>-" . ceil($max_percentage) . "%</span>";
+
+  echo '</div>';
 }
 
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
@@ -51,4 +65,15 @@ add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_produ
 
 function woocommerce_template_loop_product_title() {
   echo '<h3 class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'product-item__title' ) ) . '">' . get_the_title() . '</h3>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+add_action( 'woocommerce_after_shop_loop_item_title', 'ith_woocommerce_loop_product_cat', 5 );
+function ith_woocommerce_loop_product_cat() {
+  global $product;
+  echo '<div class="product-item__cat">' . wp_get_post_terms($product->get_id(), 'product_cat')[0]->name . '</div>';
+}
+
+add_action( 'woocommerce_before_shop_loop_item', 'ith_woocommerce_add_wishlist', 5 );
+function ith_woocommerce_add_wishlist() {
+  echo do_shortcode('[yith_wcwl_add_to_wishlist]');
 }

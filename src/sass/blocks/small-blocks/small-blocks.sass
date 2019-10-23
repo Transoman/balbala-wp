@@ -16,3 +16,37 @@
     width: 16px
     height: 9px
     fill: $main-color
+
+.yith-wcwl-add-to-wishlist
+  position: absolute
+  top: 25px
+  right: 25px
+  z-index: 1
+  margin: 0
+  .ajax-loading
+    margin: 0
+    position: absolute
+    top: 0
+    left: 0
+.yith-wcwl-add-button
+  a
+    position: relative
+    &::before
+      content: ''
+      display: block
+      width: 15px
+      height: 15px
+      background: url(images/general/star.svg) no-repeat center / contain
+.yith-wcwl-wishlistexistsbrowse,
+.yith-wcwl-wishlistaddedbrowse
+  a
+    &::before
+      content: ''
+      display: block
+      width: 15px
+      height: 15px
+      background: url(images/general/star-fill.svg) no-repeat center / contain
+#yith-wcwl-popup-message
+  opacity: 0
+  visibility: hidden
+  z-index: -10000

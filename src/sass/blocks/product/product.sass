@@ -14,17 +14,30 @@
     font-size: 1.8rem
     font-weight: 700
     color: $main-color
-  &__sale-perc
+  &__ribbons
     position: absolute
     top: 15px
     left: 15px
     z-index: 1
+  &__ribbon
+    display: inline-block
+    margin-right: 5px
     padding: 1px 10px
     font-size: 1.4rem
     font-weight: 700
     color: $gray
     border-radius: 25px
     border: 1px solid $gray
+    &:last-child
+      margin-right: 0
+    &--new
+      color: #a5d861
+      border-color: #a5d861
+  &__cat
+    margin-bottom: 7px
+    font-size: 1.2rem
+    font-weight: 700
+    color: #bbbaba
   .button
     &.loading
       position: relative
