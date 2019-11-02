@@ -1,0 +1,64 @@
+.woocommerce-ordering
+  display: flex
+  align-items: center
+  label
+    margin: 0 20px 0 0
+    font-size: 1.4rem
+    font-weight: 700
+    color: #daa8ea
+
+.woocommerce-breadcrumb
+  position: relative
+  padding-left: 70px
+  font-size: 1.6rem
+  color: rgba($main-color, 0.7)
+  &::before
+    content: ''
+    position: absolute
+    top: 11px
+    left: 0
+    width: 53px
+    height: 8px
+    background: url(images/general/title-line.svg) repeat-x center left / contain
+  a
+    color: inherit
+    &:hover, &:focus
+      color: $accent
+
+.woocommerce-pagination
+  .page-numbers
+    margin: 0
+    padding: 0
+    list-style: none
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    font-size: 1.4rem
+    font-weight: 700
+    color: #bebebe
+    li
+      margin: 17.5px
+    a
+      color: inherit
+      &:hover, &:focus
+        color: rgba($accent, 0.5)
+      &.next, &.prev
+        @extend .swiper-button-next
+        position: static
+        margin: 0
+        //display: flex
+        //align-items: center
+        //justify-content: center
+        //width: 53px
+        //height: 53px
+        //border-radius: 50%
+        //border: 1px solid $light-gray
+        //background: #fff
+        //box-shadow: $bx-shadow
+        //&:hover
+        //  background-image: linear-gradient(to right, #a5d861, #e9f6d7)
+        //  border-color: #fff
+        //  box-shadow: 0 5px 20px rgba(#a5d861, 0.2)
+    span.current
+      color: $accent

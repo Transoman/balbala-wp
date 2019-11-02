@@ -11,9 +11,13 @@
   font-size: 1.6rem
   font-weight: 500
   color: #999898
+  cursor: pointer
   +trans
   &::placeholder
     color: inherit
   &:focus
     outline: none
     border-color: $accent
+  &--select
+    padding-right: 40px
+    background: url(images/general/drop-down-arrow.svg) no-repeat calc(100% - 15px) center / 7px 4px

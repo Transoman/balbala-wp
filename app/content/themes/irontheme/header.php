@@ -15,7 +15,7 @@
 <body <?php body_class(); ?>>
 
 <div class="wrapper">
-  <header class="header">
+  <header class="header<?php echo !is_home() || !is_front_page() ? ' header--inner' : ''; ?>">
     <div class="container">
 
       <div class="logo header__logo">
