@@ -4,7 +4,8 @@ global.jQuery = require('jquery');
 let svg4everybody = require('svg4everybody'),
   popup = require('jquery-popup-overlay'),
   iMask = require('imask'),
-  Swiper = require('swiper');
+  Swiper = require('swiper'),
+  fancybox = require('@fancyapps/fancybox');
 
 jQuery(document).ready(function($) {
   // Toggle nav menu
@@ -169,6 +170,36 @@ jQuery(document).ready(function($) {
     }
   });
 
+  let productSlider = new Swiper('.woocommerce-product-slider', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    thumbs: {
+      swiper: {
+        el: '.woocommerce-product-thumb-slider',
+        slidesPerView: 4,
+        spaceBetween: 10,
+        breakpoints: {
+          993: {
+            direction: 'vertical',
+            slidesPerView: 5,
+            spaceBetween: 10,
+          }
+        }
+      }
+    }
+  });
+
+  $().fancybox({
+    selector: '[data-fancybox="group"]',
+    hash: false,
+    loop: true,
+    beforeClose : function(instance) {
+      if ($('.woocommerce-product-slider').length) {
+        productSlider.slideTo( instance.currIndex);
+      }
+    }
+  });
+
   new Swiper('.collection-slider', {
     slidesPerView: 1,
     spaceBetween: 30,
@@ -225,12 +256,64 @@ jQuery(document).ready(function($) {
     }, 1000);
   });
 
+  // Qty buton
+  let changeProductQuantity = function () {
+    $(document).on( 'click', '.quantity__btn', function(e) {
+      e.preventDefault();
+
+      var $button = $( this ),
+        $qty = $button.siblings( '.quantity__val' ),
+        current = parseInt( $qty.val() && $qty.val() > 0 ? $qty.val() : 0, 10 ),
+        min = parseInt( $qty.attr( 'min' ), 10 ),
+        max = parseInt( $qty.attr( 'max' ), 10 );
+
+      min = min ? min : 0;
+      max = max ? max : current + 1;
+
+      if ( $button.hasClass( 'quantity__btn--minus' ) && current > min ) {
+        $qty.val( current - 1 );
+        $qty.trigger( 'change' );
+      }
+
+      if ( $button.hasClass( 'quantity__btn--plus' ) && current < max ) {
+        $qty.val( current + 1 );
+        $qty.trigger( 'change' );
+      }
+
+      $( '.woocommerce-cart-form' ).find( ':input[name="update_cart"]' ).prop( 'disabled', false );
+      $("[name='update_cart']").trigger("click");
+    });
+  };
+
+
+
+  $('.quantity__val').keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+      // Allow: Ctrl/cmd+A
+      (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+      // Allow: Ctrl/cmd+C
+      (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+      // Allow: Ctrl/cmd+X
+      (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+      // Allow: home, end, left, right
+      (e.keyCode >= 35 && e.keyCode <= 39)) {
+      // let it happen, don't do anything
+      return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
+  });
+
 
   toggleNav();
   initModal();
   inputMask();
   toggleHeaderSearch();
   findVideos();
+  changeProductQuantity();
 
   // SVG
   svg4everybody({});

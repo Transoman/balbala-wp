@@ -21,7 +21,10 @@ function ith_header_cart_count() {
 /**
  * Display Discount Percentage
  */
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+
 add_action( 'woocommerce_before_shop_loop_item_title', 'ith_show_sale_percentage_loop', 25 );
+add_action( 'woocommerce_before_single_product_summary', 'ith_show_sale_percentage_loop', 10 );
 
 function ith_show_sale_percentage_loop() {
   global $product;
@@ -44,6 +47,12 @@ function ith_show_sale_percentage_loop() {
   }
 
   echo '<div class="product-item__ribbons">';
+
+	if (is_single()) { ?>
+    <div class="product-item__ribbons-wishlist">
+			<?php ith_woocommerce_add_wishlist(); ?>
+    </div>
+	<?php }
 
   $data_created_obj = (array) $product->get_date_created();
   $date_created = strtotime($data_created_obj['date']);
@@ -81,3 +90,22 @@ function ith_woocommerce_add_wishlist() {
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+/**
+ * Single product
+ */
+add_action( 'woocommerce_single_product_summary', 'ith_woocommerce_single_product_cat', 5 );
+function ith_woocommerce_single_product_cat() {
+	global $product;
+	echo '<div class="product__cat">' . wp_get_post_terms($product->get_id(), 'product_cat')[0]->name . '</div>';
+}
+
+add_action( 'woocommerce_single_product_summary', 'ith_woocommerce_single_product_delivery', 5 );
+function ith_woocommerce_single_product_delivery() {
+	echo '<div class="product__free-delivery">'. ith_get_icon( 'delivery' ) .'Бесплатная доставка</div>';
+}
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );

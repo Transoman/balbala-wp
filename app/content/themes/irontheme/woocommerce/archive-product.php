@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' ); ?>
 
-<section class="catalog">
+<section class="catalog section-page">
   <div class="container">
 <?php
 /**

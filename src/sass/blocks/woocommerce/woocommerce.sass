@@ -47,18 +47,33 @@
         @extend .swiper-button-next
         position: static
         margin: 0
-        //display: flex
-        //align-items: center
-        //justify-content: center
-        //width: 53px
-        //height: 53px
-        //border-radius: 50%
-        //border: 1px solid $light-gray
-        //background: #fff
-        //box-shadow: $bx-shadow
-        //&:hover
-        //  background-image: linear-gradient(to right, #a5d861, #e9f6d7)
-        //  border-color: #fff
-        //  box-shadow: 0 5px 20px rgba(#a5d861, 0.2)
     span.current
       color: $accent
+
+.woocommerce-message
+  position: relative
+  padding: 1.6em 16.6em 1.6em 1.6em
+  margin-bottom: 2.618em
+  background-color: #5cb85c
+  margin-left: 0
+  border-radius: 2px
+  font-size: 1.6rem
+  color: #fff
+  border-left: .618em solid rgba(0,0,0,.15)
+  +sm-block
+    display: flex
+    flex-direction: column-reverse
+    align-items: center
+    padding-right: 1.6em
+    text-align: center
+  .button
+    position: absolute
+    right: 1.6em
+    top: 50%
+    transform: translateY(-50%)
+    box-shadow: $bx-shadow
+    white-space: nowrap
+    +sm-block
+      position: static
+      transform: none
+      margin-top: 20px
