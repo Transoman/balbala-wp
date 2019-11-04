@@ -15,7 +15,7 @@
 <body <?php body_class(); ?>>
 
 <div class="wrapper">
-  <header class="header<?php echo !is_home() || !is_front_page() ? ' header--inner' : ''; ?>">
+  <header class="header<?php echo !is_home() && !is_front_page() ? ' header--inner' : ''; ?>">
     <div class="container">
 
       <div class="logo header__logo">
@@ -74,6 +74,7 @@
             <button type="button" class="header-search__close"></button>
             <form action="<?php echo home_url( '/' ); ?>" class="header-search__form">
               <input type="search" name="s" placeholder="Поиск товаров..." class="form-field header-search__field">
+              <input type="hidden" name="post_type" value="product">
               <button type="submit" class="header-search__btn">
                 <?php ith_the_icon( 'loupe' ); ?>
               </button>

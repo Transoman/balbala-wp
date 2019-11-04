@@ -11,7 +11,6 @@
   font-size: 1.6rem
   font-weight: 500
   color: #999898
-  cursor: pointer
   +trans
   &::placeholder
     color: inherit
@@ -21,3 +20,151 @@
   &--select
     padding-right: 40px
     background: url(images/general/drop-down-arrow.svg) no-repeat calc(100% - 15px) center / 7px 4px
+    cursor: pointer
+  &--textarea
+    height: 100px
+
+input[type="text"],
+input[type="email"],
+input[type="tel"]
+  @extend .form-field
+
+input[type="radio"]
+  @extend .visually-hidden
+  &:checked ~ label
+    color: rgba($main-color, 0.8)
+    &::after
+      opacity: 1
+  & ~ label
+    position: relative
+    display: block
+    margin: 0
+    font-size: 1.4rem
+    padding-left: 35px
+    cursor: pointer
+    +trans
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 20px
+      height: 20px
+      border: 1px solid #a0d758
+      box-shadow: 0 1px 4px rgba(#a0d758 , 0.46)
+      border-radius: 50%
+    &::after
+      content: ''
+      position: absolute
+      top: 5px
+      left: 5px
+      width: 10px
+      height: 10px
+      border-radius: 50%
+      background-color: #a0d758
+      opacity: 0
+      +trans
+
+.form-wrap
+  +box
+  padding: 25px 25px 35px
+  +sm-block
+    padding: 15px 10px
+  &__bottom
+    +md-block
+      text-align: center
+  &--callback
+    .btn
+      width: 100%
+      max-width: 200px
+    .wpcf7-acceptance
+      +md-block
+        text-align: left
+
+.form-title
+  margin-bottom: 25px
+  font-size: 1.8rem
+  font-weight: 500
+  color: #8e8c8c
+  &::before
+    content: '-'
+    display: inline-flex
+    vertical-align: middle
+    justify-content: center
+    align-items: center
+    margin-right: 20px
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background-color: $accent
+    font-size: 2.4rem
+    font-weight: 700
+    color: #fff
+    line-height: 1
+
+.form-inline-row
+  +row-flex
+  & > *
+    +col
+    +size(4)
+    +size-md(12)
+
+.check
+  @extend .visually-hidden
+  &:checked
+    & + span
+      &::after
+        opacity: 1
+  + span
+    position: relative
+    padding-left: 35px
+    font-size: 1.4rem
+    color: rgba($main-color, 0.8)
+    cursor: pointer
+    &::before
+      content: ''
+      position: absolute
+      top: -2px
+      left: 0
+      width: 20px
+      height: 20px
+      border-radius: 2.5px
+      border: 1px solid $green
+      box-shadow: 0 1px 4px rgba($green, 0.46)
+    &::after
+      content: ''
+      position: absolute
+      top: 2px
+      left: 7px
+      width: 6px
+      height: 10px
+      border-right: 2px solid $green
+      border-bottom: 2px solid $green
+      transform: rotate(45deg)
+      opacity: 0
+      +trans
+    a
+      text-decoration: underline
+      color: $accent
+      &:hover, &:focus
+        text-decoration: none
+        color: rgba($accent, 0.8)
+
+.wpcf7-acceptance
+  +md-block
+    display: block
+    margin-top: 20px
+
+.wpcf7-response-output
+  @extend .notification
+  margin-right: 0 !important
+  margin-left: 0 !important
+  &.wpcf7-display-none
+    display: none
+
+div.wpcf7-validation-errors,
+div.wpcf7-acceptance-missing
+  border: 0
+  background-color: #d9534f
+div.wpcf7-mail-sent-ok
+  border: 0

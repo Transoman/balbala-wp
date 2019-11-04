@@ -1,0 +1,27 @@
+.notification
+  position: relative
+  padding: 1.6em !important
+  margin-bottom: 2.618em
+  background-color: #5cb85c
+  margin-left: 0
+  border-radius: 2px
+  font-size: 1.6rem
+  color: #fff
+  border-left: .618em solid rgba(0,0,0,.15) !important
+  +sm-block
+    display: flex
+    flex-direction: column-reverse
+    align-items: center
+    //padding-right: 1.6em !important
+    text-align: center
+  .button
+    position: absolute
+    right: 1.6em
+    top: 50%
+    transform: translateY(-50%)
+    box-shadow: $bx-shadow
+    white-space: nowrap
+    +sm-block
+      position: static
+      transform: none
+      margin-top: 20px

@@ -4,18 +4,34 @@
  * Disable all styles
  */
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+add_action( 'wp_enqueue_scripts', 'fc_remove_woo_lightbox', 99 );
+function fc_remove_woo_lightbox() {
+  remove_action( 'wp_head', array( $GLOBALS['woocommerce'], 'generator' ) );
+  wp_dequeue_style( 'woocommerce_prettyPhoto_css' );
+  wp_dequeue_script( 'prettyPhoto' );
+  wp_dequeue_script( 'prettyPhoto-init' );
+}
 
 /**
  * Cart Count
  */
 function ith_header_cart_count() {
   $cart_count = WC()->cart->get_cart_contents_count();
-  if($cart_count > 99){
+  if ($cart_count > 99){
     $cart_count = '99+';
   }
   ?>
   <span class="header-cart__count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
   <?php
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+function woocommerce_header_add_to_cart_fragment( $fragments ) {
+  global $woocommerce;
+  ob_start();
+  ith_header_cart_count();
+  $fragments['.header-cart__count'] = ob_get_clean();
+  return $fragments;
 }
 
 /**
@@ -109,3 +125,48 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+/**
+ * Checkout
+ */
+// Hook in
+add_filter( 'woocommerce_checkout_fields' , 'ith_woocommerce_override_checkout_fields' );
+
+function ith_woocommerce_override_checkout_fields( $fields ) {
+  unset($fields['billing']['billing_company']);
+  unset($fields['billing']['billing_address_2']);
+  unset($fields['billing']['billing_state']);
+  unset($fields['billing']['billing_last_name']);
+
+  $fields['billing']['billing_first_name']['placeholder'] = 'Имя и фамилия *';
+  $fields['billing']['billing_country']['placeholder'] = 'Страна *';
+  $fields['billing']['billing_city']['placeholder'] = 'Город *';
+  $fields['billing']['billing_postcode']['placeholder'] = 'Почтовый индекс *';
+  $fields['billing']['billing_phone']['placeholder'] = 'Телефон *';
+  $fields['billing']['billing_email']['placeholder'] = 'Электронная почта *';
+
+  $fields['billing']['billing_email']['priority'] = 20;
+
+  return $fields;
+}
+
+remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+add_filter('woocommerce_update_order_review_fragments', 'ith_woocommerce_order_fragments_split_shipping', 10, 1);
+
+function ith_woocommerce_order_fragments_split_shipping($order_fragments) {
+
+  ob_start();
+  ith_woocommerce_order_review_shipping_split();
+  $ith_woocommerce_order_review_shipping_split = ob_get_clean();
+
+  $order_fragments['.woocommerce-shipping-totals'] = $ith_woocommerce_order_review_shipping_split;
+
+  return $order_fragments;
+
+}
+
+// We'll get the template that just has the shipping options that we need for the new table
+function ith_woocommerce_order_review_shipping_split( $deprecated = false ) {
+  wc_get_template( 'checkout/shipping-order-review.php', array( 'checkout' => WC()->checkout() ) );
+}

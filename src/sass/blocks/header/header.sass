@@ -7,6 +7,8 @@
   padding: 80px 0 15px
   +xl-block
     padding-top: 40px
+  +sm-block
+    padding: 15px 0
   .container
     display: flex
     align-items: flex-start
@@ -14,6 +16,8 @@
       align-items: center
   &__logo
     margin-right: 35px
+    +sm-block
+      max-width: 100px
   &__nav
     position: relative
   &__phone
@@ -35,11 +39,16 @@
   align-items: center
   &__item
     margin-right: 35px
+    +sm-block
+      margin-right: 15px
     &:last-child
       margin-right: 0
   &__icon
     width: 28px
     height: 24px
+    +sm-block
+      width: 20px
+      height: 16px
     +trans
   &__toggle
     &:hover

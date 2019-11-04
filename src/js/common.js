@@ -170,24 +170,34 @@ jQuery(document).ready(function($) {
     }
   });
 
-  let productSlider = new Swiper('.woocommerce-product-slider', {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    thumbs: {
-      swiper: {
-        el: '.woocommerce-product-thumb-slider',
-        slidesPerView: 4,
-        spaceBetween: 10,
-        breakpoints: {
-          993: {
-            direction: 'vertical',
-            slidesPerView: 5,
-            spaceBetween: 10,
+  let productSlider;
+  if ($('.woocommerce-product-thumb-slider').length) {
+    productSlider = new Swiper('.woocommerce-product-slider', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      thumbs: {
+        swiper: {
+          el: '.woocommerce-product-thumb-slider',
+          slidesPerView: 4,
+          spaceBetween: 10,
+          breakpoints: {
+            993: {
+              direction: 'vertical',
+              slidesPerView: 5,
+              spaceBetween: 10,
+            }
           }
         }
       }
-    }
-  });
+    });
+  }
+  else {
+    productSlider = new Swiper('.woocommerce-product-slider', {
+      slidesPerView: 1,
+      spaceBetween: 30
+    });
+  }
+
 
   $().fancybox({
     selector: '[data-fancybox="group"]',
