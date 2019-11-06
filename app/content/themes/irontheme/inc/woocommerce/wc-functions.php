@@ -64,7 +64,7 @@ function ith_show_sale_percentage_loop() {
 
   echo '<div class="product-item__ribbons">';
 
-	if (is_single()) { ?>
+	if (is_singular( 'product' )) { ?>
     <div class="product-item__ribbons-wishlist">
 			<?php ith_woocommerce_add_wishlist(); ?>
     </div>

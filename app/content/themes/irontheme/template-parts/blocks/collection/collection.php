@@ -28,6 +28,8 @@ if( !empty($block['align']) ) {
 $title = get_field('title') ?: 'Заголовок...';
 
 ?>
+
+<?php if (have_rows( 'collection_slider' )): ?>
 <section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
   <div class="collection__wrap">
     <div class="section-head">
@@ -43,174 +45,106 @@ $title = get_field('title') ?: 'Заголовок...';
 
     <div class="collection-slider swiper-container">
       <div class="swiper-wrapper">
-        <div class="collection-slider__item swiper-slide">
-          <div class="product-item">
-            
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-              </div>
-  
-              <a href="#">
-                <h3 class="product-item__title">Для женщин</h3>
-              </a>
-  
-              <span class="product-item__cat">Коллекция</span>
+        <?php while (have_rows( 'collection_slider' )): the_row();
+          $collections = get_sub_field('slides');
+          if (count($collections) == 1): ?>
+            <div class="collection-slider__item swiper-slide">
+              <?php while (have_rows( 'slides' )): the_row();
+              global $post;
+              $post_object = get_sub_field( 'collection' );
+              $post = $post_object;
+              setup_postdata($post); ?>
+                <div class="product-item">
 
-              <div class="product-item__bottom">
-                <span class="price">от 500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
+                  <div class="product-item__content">
+                    <?php $new = get_field( 'new', get_the_ID() );
+                    $perc_sale = get_field( 'perc_sale', get_the_ID() );
+                    $price = get_field( 'price', get_the_ID() );
+                    if ($new || $perc_sale): ?>
+                      <div class="product-item__ribbons">
+                        <?php if ($new): ?>
+                          <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                        <?php endif; ?>
+                        <?php if ($perc_sale): ?>
+                          <span class="product-item__ribbon product-item__ribbon--sale-perc">-<?php echo $perc_sale; ?>%</span>
+                        <?php endif; ?>
+                      </div>
+                    <?php endif; ?>
+
+                    <a href="<?php the_permalink(); ?>">
+                      <h3 class="product-item__title"><?php the_title(); ?></h3>
+                    </a>
+
+                    <span class="product-item__cat">Коллекция</span>
+
+                    <div class="product-item__bottom">
+                      <?php if ($price): ?>
+                        <span class="price"><?php echo $price; ?> KZT</span>
+                      <?php endif; ?>
+                      <a href="<?php the_permalink(); ?>" class="btn">Показать</a>
+                    </div>
+                  </div>
+
+                  <div class="product-item__img">
+                    <a href="<?php the_permalink(); ?>">
+                      <?php the_post_thumbnail( 'large' ); ?>
+                    </a>
+                  </div>
+
+                </div>
+              <?php wp_reset_postdata(); endwhile; ?>
             </div>
+          <?php else: ?>
+            <div class="collection-slider__item collection-slider__item--double swiper-slide">
+              <?php while (have_rows( 'slides' )): the_row();
+                global $post;
+                $post_object = get_sub_field( 'collection' );
+                $post = $post_object;
+                setup_postdata($post); ?>
+              <div class="product-item">
 
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
+                <div class="product-item__content">
+                  <?php $new = get_field( 'new', get_the_ID() );
+                  $perc_sale = get_field( 'perc_sale', get_the_ID() );
+                  $price = get_field( 'price', get_the_ID() );
+                  if ($new || $perc_sale): ?>
+                    <div class="product-item__ribbons">
+                      <?php if ($new): ?>
+                        <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
+                      <?php endif; ?>
+                      <?php if ($perc_sale): ?>
+                        <span class="product-item__ribbon product-item__ribbon--sale-perc">-<?php echo $perc_sale; ?>%</span>
+                      <?php endif; ?>
+                      <span class="product-item__cat">Коллекция</span>
+                    </div>
+                  <?php endif; ?>
 
-          </div>
-        </div>
-        <div class="collection-slider__item collection-slider__item--double swiper-slide">
-          <div class="product-item">
+                  <a href="<?php the_permalink(); ?>">
+                    <h3 class="product-item__title"><?php the_title(); ?></h3>
+                  </a>
 
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-                <span class="product-item__cat">Коллекция</span>
+                  <div class="product-item__bottom">
+                    <?php if ($price): ?>
+                      <span class="price"><?php echo $price; ?> KZT</span>
+                    <?php endif; ?>
+                    <a href="<?php the_permalink(); ?>" class="btn">Показать</a>
+                  </div>
+                </div>
+
+                <div class="product-item__img">
+                  <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail( 'large' ); ?>
+                  </a>
+                </div>
+
               </div>
-
-              <a href="#">
-                <h3 class="product-item__title">Для мужчин</h3>
-              </a>
-
-              <div class="product-item__bottom">
-                <span class="price">от 500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
+            <?php wp_reset_postdata(); endwhile; ?>
             </div>
-
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
-
-          </div>
-          <div class="product-item">
-
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-                <span class="product-item__cat">Коллекция</span>
-              </div>
-
-              <a href="#">
-                <h3 class="product-item__title">Для детей</h3>
-              </a>
-
-              <div class="product-item__bottom">
-                <span class="price">500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
-            </div>
-
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
-
-          </div>
-        </div>
-        <div class="collection-slider__item swiper-slide">
-          <div class="product-item">
-
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-              </div>
-
-              <a href="#">
-                <h3 class="product-item__title">Для женщин</h3>
-              </a>
-
-              <span class="product-item__cat">Коллекция</span>
-
-              <div class="product-item__bottom">
-                <span class="price">от 500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
-            </div>
-
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
-
-          </div>
-        </div>
-        <div class="collection-slider__item collection-slider__item--double swiper-slide">
-          <div class="product-item">
-
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-                <span class="product-item__cat">Коллекция</span>
-              </div>
-
-              <a href="#">
-                <h3 class="product-item__title">Для мужчин</h3>
-              </a>
-
-              <div class="product-item__bottom">
-                <span class="price">от 500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
-            </div>
-
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
-
-          </div>
-          <div class="product-item">
-
-            <div class="product-item__content">
-              <div class="product-item__ribbons">
-                <span class="product-item__ribbon product-item__ribbon--new">Новинка</span>
-                <span class="product-item__ribbon product-item__ribbon--sale-perc">-17%</span>
-                <span class="product-item__cat">Коллекция</span>
-              </div>
-
-              <a href="#">
-                <h3 class="product-item__title">Для детей</h3>
-              </a>
-
-              <div class="product-item__bottom">
-                <span class="price">500 KZT</span>
-                <a href="#" class="btn">Показать</a>
-              </div>
-            </div>
-
-            <div class="product-item__img">
-              <a href="#">
-                <img src="<?php echo THEME_URL; ?>/images/content/collection-sock.jpg" alt="">
-              </a>
-            </div>
-
-          </div>
-        </div>
+          <?php endif;
+        endwhile; ?>
       </div>
     </div>
 
   </div>
 </section>
+<?php endif; ?>
