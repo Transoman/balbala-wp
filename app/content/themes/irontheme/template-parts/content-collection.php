@@ -1,7 +1,11 @@
 <div class="section-head">
   <div class="section-head__left">
-    <h2 class="section-title section-title--page"><?php the_title(); ?></h2>
-    <?php woocommerce_breadcrumb(); ?>
+    <?php if ( is_archive() ): ?>
+      <h3 class="section-title"><?php the_title(); ?></h3>
+    <?php else: ?>
+      <h2 class="section-title section-title--page"><?php the_title(); ?></h2>
+      <?php woocommerce_breadcrumb(); ?>
+    <?php endif; ?>
   </div>
 </div>
 
