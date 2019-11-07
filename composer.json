@@ -18,7 +18,8 @@
     "wpackagist-plugin/woocommerce-admin": "*",
     "wpackagist-plugin/duplicate-post": "*",
     "wpackagist-plugin/mailchimp": "*",
-    "wpackagist-plugin/yith-woocommerce-wishlist": "*"
+    "wpackagist-plugin/yith-woocommerce-wishlist": "*",
+    "wpackagist-plugin/all-in-one-wp-migration": "*"
   },
   "extra": {
     "wordpress-install-dir": "app/wp",

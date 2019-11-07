@@ -1,4 +1,7 @@
 wp/
 content/plugins/*
+content/ai1wm-backups
+content/cache
+content/ewww
 !content/plugins/advanced-custom-fields-pro
 local-config.php

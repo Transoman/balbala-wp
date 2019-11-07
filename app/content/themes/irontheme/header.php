@@ -60,11 +60,13 @@
       </div>
 
       <div class="header-actions header__actions">
-        <div class="header-actions__item header-telegram">
-          <a href="#" class="header-actions__toggle">
-            <?php ith_the_icon( 'telegram', 'header-actions__icon' ); ?>
-          </a>
-        </div>
+        <?php if (false): ?>
+          <div class="header-actions__item header-telegram">
+            <a href="#" class="header-actions__toggle">
+              <?php ith_the_icon( 'telegram', 'header-actions__icon' ); ?>
+            </a>
+          </div>
+        <?php endif; ?>
 
         <div class="header-actions__item header-search">
           <button type="button" class="header-actions__toggle header-search__toggle">
